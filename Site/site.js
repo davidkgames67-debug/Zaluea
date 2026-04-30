@@ -22,7 +22,7 @@ function updates() {
     }
 }
 
-if(localStorage.getItem("title").text != "") {
+if(localStorage.getItem("title") && localStorage.getItem("title") != "") {
     document.title = localStorage.getItem("title");
 }
 
@@ -39,8 +39,8 @@ function titleSet(text) {
 }
 
 function icoSet(text1) {
-    if(text != "") {
-        document.querySelector("link[rel= 'shortcut icon']").href = text1
+    if(text1 != "") {
+        document.querySelector("link[rel='icon']").href = text1
     }
 }
 
