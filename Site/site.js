@@ -34,7 +34,7 @@ function titleSet(text) {
     
     else {
         localStorage.removeItem("title");
-        document.title = "Zaluea";
+        document.title = "Divinity Proxy";
     }
 }
 

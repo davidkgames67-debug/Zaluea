@@ -1,4 +1,12 @@
 {
+  "name": "divinity-proxy",
+  "version": "1.0.0",
+  "description": "Divinity Proxy - bypass web restrictions",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
   "dependencies": {
     "bare-server-node": "github:tomphttp/bare-server-node",
     "node-static": "^0.7.11"

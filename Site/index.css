@@ -1,38 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-dark: #B8960C;
+    --gold-glow: rgba(212, 175, 55, 0.3);
+    --black: #0A0A0A;
+    --black-light: #141414;
+    --black-card: #1A1A1A;
+    --black-border: #2A2A2A;
+    --text-primary: #F5F5F5;
+    --text-secondary: #A0A0A0;
+}
+
 @keyframes startAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes goldPulse {
+    0%, 100% { text-shadow: 0 0 20px var(--gold-glow); }
+    50% { text-shadow: 0 0 40px var(--gold-glow), 0 0 60px rgba(212, 175, 55, 0.15); }
+}
+
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(212, 175, 55, 0.3); }
+    50% { border-color: rgba(212, 175, 55, 0.6); }
 }
 
 * {
-    font-family: 'Roboto';
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background: rgb(22, 22, 22);
+    background: var(--black);
     display: flex;
     flex-direction: column;
-    margin: 0;
     min-height: 100vh;
     animation: startAnimation ease-in 0.8s;
+    color: var(--text-primary);
 }
 
 .bar {
-    background-color: #272727;
-    height: 50px;
+    background: linear-gradient(180deg, #111111 0%, #0A0A0A 100%);
+    height: 56px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    border-bottom: 1px solid var(--black-border);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 100;
+    backdrop-filter: blur(12px);
 }
 
 .gamewindow {
     position: fixed;
-    top: 50px;
+    top: 56px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -42,43 +71,60 @@ body {
 }
 
 .page {
-    background-color: #272727;
-    height: 200px;
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-radius: 12px;
+    padding: 24px;
     width: 600px;
-    top: 0;
-    left: 0;
-    right: 0;
+    max-width: 90vw;
 }
 
 .bottom {
-    background-color: #272727;
+    background: linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
     margin-top: auto;
-    height: 50px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-top: 1px solid var(--black-border);
 }
 
 .gamebutton {
-    margin-top: 1%;
-    font-size: large;
+    margin-top: 8px;
+    font-size: 16px;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.gamebutton:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold-light);
 }
 
 .text {
-    color: #FFF;
-    font-size: 25px;
-    margin-top: 1%;
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin-top: 16px;
 }
 
 .textbottom {
-    color: #FFF;
-    font-size: 15px;
-    margin-top: 0.5%;
-    margin-right: 1%;
+    color: var(--text-secondary);
+    font-size: 13px;
 }
 
 .linkbottom {
-    color: rgb(116, 192, 255);
-    font-size: 14px;
-    margin-top: 0.5%;
-    margin-right: 0.2%;
+    color: var(--gold);
+    font-size: 13px;
+    margin-left: 16px;
+    transition: color 0.3s ease;
+}
+
+.linkbottom:hover {
+    color: var(--gold-light);
 }
 
 .quick {
@@ -106,47 +152,63 @@ body {
 }
 
 .main_title {
-    font-size: 35px;
-    padding: 8px;
-    padding-left: 8px;
-    color: rgba(255, 255, 255, 0.842);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main_title img {
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+}
+
+.main_title a {
+    color: var(--gold) !important;
+    font-weight: 600;
+}
+
+.main_title a:hover {
+    color: var(--gold-light) !important;
 }
 
 .button {
-    color: white;
-    font-size: 16px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
     position: fixed;
-    top: 20px;
-    transition-duration: 0.4s;
+    top: 18px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .button:hover {
-    color: grey;
+    color: var(--gold);
 }
 
 .games {
-    right: 30px;
+    right: 24px;
 }
 
 .ytlink {
-    right: 100px;
+    right: 90px;
     cursor: pointer;
 }
 
 .closegame {
-    right: 30px;
+    right: 24px;
     cursor: pointer;
     display: none;
 }
 
 .fullscreengame {
-    right: 130px;
+    right: 140px;
     cursor: pointer;
     display: none;
-}
-
-.ytlink:hover {
-    color: grey;
 }
 
 .tabconfig {
@@ -154,136 +216,187 @@ body {
     right: 180px;
 }
 
-.tabconfig:hover {
-    color: grey;
-}
-
 .updates_btn {
     cursor: pointer;
     right: 270px;
 }
 
-.updates_btn:hover {
-    color: grey;
-}
-
 a:hover {
-    color: grey;
+    color: var(--gold);
 }
 
 a {
-    color: white;
-    transition-duration: 0.4s;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
     text-decoration: none;
 }
 
 .title {
-    font-size: 90px;
-    margin-top: 13%;
+    font-size: 72px;
+    font-weight: 700;
+    margin-top: 15%;
     text-align: center;
-    color: rgba(255, 255, 255, 0.842);
+    color: var(--gold);
+    animation: goldPulse 4s ease-in-out infinite;
+    letter-spacing: -1px;
+}
+
+.hero-logo {
+    display: block;
+    margin: 12% auto 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px var(--gold-glow);
 }
 
 .games_title {
-    font-size: 90px;
+    font-size: 72px;
+    font-weight: 700;
     margin-top: 5%;
     text-align: center;
-    color: rgba(255, 255, 255, 0.842);
+    color: var(--gold);
+    animation: goldPulse 4s ease-in-out infinite;
 }
 
 form input {
-    background: none;
-    padding: 0px 20px;
-    height: 50px;
-    color: var(--text-color);
+    background: var(--black-card);
+    padding: 0 24px;
+    height: 52px;
+    color: var(--text-primary);
     outline: none;
-    width: 400px;
-    margin-top: 10px;
-    border-radius: 50px;
-    color: #FFF;
-    border: 5px solid  rgba(255, 255, 255, 0.363);
-    transition-duration: 1s;
+    width: 480px;
+    max-width: 90vw;
+    margin-top: 16px;
+    border-radius: 26px;
+    border: 2px solid var(--black-border);
+    font-size: 15px;
+    transition: all 0.4s ease;
+}
+
+form input::placeholder {
+    color: var(--text-secondary);
 }
 
 form input:focus {
-    border-color: rgba(255, 255, 255, 0.712);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px var(--gold-glow);
 }
 
 .settings {
-    background-color: #272727;
-    height: 50px;
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-radius: 12px;
     position: fixed;
     right: 100px;
-    width: 350px;
-    height: 200px;
+    top: 56px;
+    width: 320px;
+    padding: 20px;
     display: none;
+    z-index: 101;
 }
 
 .updates {
-    background-color: #272727;
-    height: 50px;
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-radius: 12px;
     position: fixed;
-    right: 455px;
-    width: 350px;
-    height: 200px;
+    right: 270px;
+    top: 56px;
+    width: 320px;
+    padding: 20px;
     display: none;
-}  
+    z-index: 101;
+}
 
 .updatetitle {
-    color: #FFF;
+    color: var(--gold);
     text-align: center;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .updatespage {
-    margin-top: 2%;
-    color: #FFF;
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 14px;
 }
 
 .message {
-    margin-top: 2%;
-    color: #FFF;
+    margin-top: 8px;
+    color: var(--text-secondary);
 }
 
 .settingsstuff {
-    color: #FFF;
+    color: var(--text-primary);
 }
 
 .closesettings_button {
     position: fixed;
     top: 0%;
     right: 50px;
-    color: rgb(255, 32, 32);
+    color: #FF3232;
 }
 
 .title_main {
     text-align: center;
-    margin-top: 1%;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--gold);
 }
 
 .setTitle {
-    color: #FFF;
-    background: none;
-    border: 5px solid  rgba(255, 255, 255, 0.363);
-    margin-top: 1%;
+    color: var(--text-primary);
+    background: var(--black-light);
+    border: 1px solid var(--black-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    width: 90%;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.setTitle:focus {
+    border-color: var(--gold);
 }
 
 .setIco {
-    color: #FFF;
-    margin-top: 1%;
-    background: none;
-    border: 5px solid  rgba(255, 255, 255, 0.363);
+    color: var(--text-primary);
+    margin-top: 8px;
+    background: var(--black-light);
+    border: 1px solid var(--black-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    width: 90%;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.setIco:focus {
+    border-color: var(--gold);
 }
 
 .resetButton {
-    width: 20%;
-    font-size: large;
-    height: 20%;
-    border: 3px solid rgba(255, 255, 255, 0.842);
-    border-radius: 5px;
-    background: #FFF;
-    margin-top: 5%;
+    width: 80px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    background: transparent;
+    margin-top: 16px;
     cursor: pointer;
-    color: rgb(0, 0, 0);
+    color: var(--gold);
+    transition: all 0.3s ease;
+}
+
+.resetButton:hover {
+    background: var(--gold);
+    color: var(--black);
 }
 
 .quicktext {
@@ -294,5 +407,35 @@ form input:focus {
 }
 
 .games {
-    color: #FFF;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 48px;
+        margin-top: 20%;
+    }
+    .games_title {
+        font-size: 48px;
+    }
+    form input {
+        width: 90vw;
+    }
+    .hero-logo {
+        width: 64px;
+        height: 64px;
+        margin-top: 18%;
+    }
+    .button {
+        font-size: 12px;
+    }
+    .tabconfig {
+        right: 140px;
+    }
+    .updates_btn {
+        right: 220px;
+    }
+    .ytlink {
+        right: 70px;
+    }
 }
